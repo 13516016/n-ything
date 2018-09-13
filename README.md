@@ -20,7 +20,7 @@ All these models will inherit the **ChessPiece** abstract base class, which has 
 
   save it as a pair of values (x,y)
 
-- move possibilities
+- move possibilities (virtual function)
 
   a function that checks all the move possibilities of eating the other pieces. <br>
   example: Queen should check all horizontal, vertical, and diagonal pieces.   
@@ -29,7 +29,7 @@ All these models will inherit the **ChessPiece** abstract base class, which has 
 
   **black** or **white**
 
-## N-ything folder
+## N-ything
 
 #### solver.py
 In the *solver.py* file, we need to implement these methods:
@@ -49,6 +49,14 @@ In the *cost.py* file, we need to implement this method:
 
 Those function above will be used in the algorithms.
 
+
+## Utillities
+
+#### parser.py
+This will parse the external file and returns the array of Pawns object 
+
+#### printer.py
+This will print the state of the chess board to the screen 
 
 ## Main Program 
 

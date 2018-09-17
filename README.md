@@ -44,10 +44,10 @@ In the *solver.py* file, we need to implement these methods:
 
 
 
-#### cost.py
+#### fitness.py
 In the *cost.py* file, we need to implement this method:
 
-1. *cost_function.py* : This function will receive the state of a solution and calculate the cost function.
+1. *fitness_function.py* : This function will receive the state of a solution and calculate the cost function.
 
 Those function above will be used in the algorithms.
 

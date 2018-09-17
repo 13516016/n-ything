@@ -20,10 +20,8 @@ All these models will inherit the **ChessPiece** abstract base class, which has 
 
   save it as a pair of values (x,y)
 
-- move possibilities (virtual function)
-
-  a function that checks all the move possibilities of eating the other pieces. <br>
-  example: Queen should check all horizontal, vertical, and diagonal pieces.   
+- countAttackedPawns
+  count the other pawns that can be attacked by **this**
 
 - color
 

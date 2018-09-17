@@ -32,9 +32,13 @@ All these models will inherit the **ChessPiece** abstract base class, which has 
 #### solver.py
 In the *solver.py* file, we need to implement these methods:
 
-1. *generate_solution* : This function will receive the current state of the problem and make a solution based on the best cost.
+1. *generate_move* : This function will receive the current state of the problem and make a move based on the best cost.
 
-2. *generate_random_solution* : This function  will receive the current state of the problem and will make a random solution out of it.
+2. *generate_random_move* : This function will receive the current state and make a random move.
+
+3. *generate_random_solution* : This function  will receive the current state of the problem and will make a random solution out of it.
+
+
 
     I think we need to implement another function for the genetic algorithm, please let us know :D
 

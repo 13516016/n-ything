@@ -34,7 +34,7 @@ In the *solver.py* file, we need to implement these methods:
 
 1. *generate_move* : This function will receive the current state of the problem and make a move based on the best cost.
 
-2. *generate_random_move* : This function will receive the current state and make a random move.
+2. *generate_random_move* : This function will receive the current state and make a random move (move one pawn to random location).
 
 3. *generate_random_solution* : This function  will receive the current state of the problem and will make a random solution out of it.
 

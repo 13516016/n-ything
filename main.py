@@ -1,17 +1,17 @@
-import keyboard
 from util import parser, printer
 from algorithm import annealing, genetic, hill_climbing
+from model import Color, Queen
 
 
 def show_landing_screen():
   print(
     '''
-                                                                    ███╗   ██╗              ██╗   ██╗    ████████╗██╗  ██╗██╗███╗   ██╗ ██████╗ 
-                                                                    ████╗  ██║              ╚██╗ ██╔╝    ╚══██╔══╝██║  ██║██║████╗  ██║██╔════╝ 
+                                                                    ███╗   ██╗              ██╗   ██╗    ████████╗██╗  ██╗██╗███╗   ██╗ ██████╗
+                                                                    ████╗  ██║              ╚██╗ ██╔╝    ╚══██╔══╝██║  ██║██║████╗  ██║██╔════╝
                                                                     ██╔██╗ ██║    █████╗     ╚████╔╝        ██║   ███████║██║██╔██╗ ██║██║  ███╗
                                                                     ██║╚██╗██║    ╚════╝      ╚██╔╝         ██║   ██╔══██║██║██║╚██╗██║██║   ██║
                                                                     ██║ ╚████║                 ██║          ██║   ██║  ██║██║██║ ╚████║╚██████╔╝
-                                                                    ╚═╝  ╚═══╝                 ╚═╝          ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝                                                                             
+                                                                    ╚═╝  ╚═══╝                 ╚═╝          ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝
     '''
   )
 
@@ -21,17 +21,17 @@ def show_file_prompt():
   return filename
 
 def show_option_prompt():
-  option = 0  
+  option = 0
   while (option < 1 and option >3):
     print("Press 1 to use Hill Climbing Algorithm")
     print("Press 2 to use Simulated Annealing Algorithm")
     print("Press 3 to use Genetic Algorithm")
     option = int(input())
-    
-  return option   
+
+  return option
 
 def choose_algorithm(chess_pieces, option):
-  # result = chess_pieces  
+  # result = chess_pieces
   if option == 1:
     pass
     # result =  annealing(chess_pieces)
@@ -50,8 +50,3 @@ if (__name__ == '__main__'):
   # chess_pieces = parser(filename)
   # result = choose_algorithm(option, chess_pieces)
   # printer(result)
-  
-
-
-
-

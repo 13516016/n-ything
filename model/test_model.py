@@ -13,7 +13,7 @@ def generate_test_chess_pieces():
   b2_white = Bishop(5, 3, Color.WHITE)
   k1_white = Knight(2, 3, Color.WHITE)
   k2_black = Knight(3, 1, Color.BLACK)
-  
+
   chess_pieces.append(q1_black)
   chess_pieces.append(r1_white)
   chess_pieces.append(b1_white)
@@ -23,7 +23,7 @@ def generate_test_chess_pieces():
   chess_pieces.append(k2_black)
   chess_pieces.append(q3_black)
   chess_pieces.append(b2_white)
-  
+
   piece_dict = {
     "queen": [q1_black, q2_white, q3_black],
     "bishop": [b1_white, b2_white],
@@ -32,10 +32,10 @@ def generate_test_chess_pieces():
   }
 
   piece_attacked = {
-    "queen": 7,
-    "bishop": 3,
+    "queen": 10,
+    "bishop": 4,
     "rook": 3,
-    "knight":3 
+    "knight":4
   }
 
   return chess_pieces, piece_dict, piece_attacked
@@ -47,7 +47,7 @@ class ModelUnitTest(unittest.TestCase):
     chess_pieces, piece_dict, piece_attacked = generate_test_chess_pieces()
     queens = piece_dict["queen"]
 
-    attacked_pawns = sum([queen.count_attacked_pawns(chess_pieces) for queen in queens])
+    attacked_pawns = sum([queen.count_attacked_enemy(chess_pieces) + queen.count_attacked_ally(chess_pieces) for queen in queens])
 
     self.assertEqual(attacked_pawns, piece_attacked["queen"], "Queen count attacked pawns" )
 
@@ -55,7 +55,7 @@ class ModelUnitTest(unittest.TestCase):
     chess_pieces, piece_dict, piece_attacked = generate_test_chess_pieces()
     bishops = piece_dict["bishop"]
 
-    attacked_pawns = sum([bishop.count_attacked_pawns(chess_pieces) for bishop in bishops])
+    attacked_pawns = sum([bishop.count_attacked_ally(chess_pieces) + bishop.count_attacked_enemy(chess_pieces) for bishop in bishops])
 
     self.assertEqual(attacked_pawns, piece_attacked["bishop"], "Bishop count attacked pawns" )
 
@@ -63,15 +63,15 @@ class ModelUnitTest(unittest.TestCase):
     chess_pieces, piece_dict, piece_attacked = generate_test_chess_pieces()
     rooks = piece_dict["rook"]
 
-    attacked_pawns = sum([rook.count_attacked_pawns(chess_pieces) for rook in rooks])
+    attacked_pawns = sum([rook.count_attacked_ally(chess_pieces) + rook.count_attacked_enemy(chess_pieces) for rook in rooks])
 
     self.assertEqual(attacked_pawns, piece_attacked["rook"], "Rook count attacked pawns" )
-  
+
   def test_knight(self):
     chess_pieces, piece_dict, piece_attacked = generate_test_chess_pieces()
     knights= piece_dict["knight"]
 
-    attacked_pawns = sum([knight.count_attacked_pawns(chess_pieces) for knight in knights])
+    attacked_pawns = sum([knight.count_attacked_ally(chess_pieces) + knight.count_attacked_enemy(chess_pieces) for knight in knights])
 
     self.assertEqual(attacked_pawns, piece_attacked["knight"], "Knight count attacked pawns" )
 

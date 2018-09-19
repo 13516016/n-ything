@@ -13,9 +13,20 @@ class ChessPiece(ABC):
   def is_position_different(self, chess_piece):
     return not (self.x == chess_piece.x and self.y == chess_piece.y)
 
+
   @abstractmethod
-  def count_attacked_pawns(self,chess_pieces):
+  def list_attacked_ally(self,chess_pieces):
     pass
+
+  @abstractmethod
+  def list_attacked_enemy(self,chess_pieces):
+    pass
+
+  def count_attacked_ally(self,chess_pieces):
+    return len(self.list_attacked_ally(chess_pieces))
+
+  def count_attacked_enemy(self,chess_pieces):
+    return len(self.list_attacked_enemy(chess_pieces))
 
 # Find chess piece with the given coordinate
 def find_chess_piece(chess_pieces,x,y):

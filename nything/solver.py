@@ -12,8 +12,13 @@ def more_optimal(min_same_color_attacks, max_different_color_attacks, current_ch
 
     return False
 
-def random_position():
-    return (randint(0, 7), randint(0, 7))
+def random_position(chess_pieces):
+    (random_x, random_y) = (randint(0, 7), randint(0, 7))
+
+    while(chess_pieces[0].find_chess_pieces(chess_pieces, random_x, random_y)):
+        (random_x, random_y) = (randint(0, 7), randint(0, 7))
+
+    return (random_x, random_y)
 
 def generate_move(chess_pieces):
     current_chess_pieces = chess_pieces[:]
@@ -37,8 +42,9 @@ def generate_move(chess_pieces):
 
 def generate_move_random(chess_pieces):
     random_bidak = randint(0, len(chess_pieces)-1)
-    (random_x, random_y) = random_position()
 
+    (random_x, random_y) = random_position(chess_pieces)
+    
     chess_pieces[random_bidak].x = random_x
     chess_pieces[random_bidak].y = random_y
 
@@ -46,14 +52,9 @@ def generate_move_random(chess_pieces):
 
 def generate_random_solution(chess_pieces):
     for k in range(0, len(chess_pieces)):
-        (random_x, random_y) = random_position()
+        (random_x, random_y) = random_position(chess_pieces)
 
         chess_pieces[k].x = random_x
         chess_pieces[k].y = random_y
     
     return chess_pieces
-
-def main():
-    print('HAI')
-
-main()

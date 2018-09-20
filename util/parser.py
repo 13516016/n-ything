@@ -11,19 +11,19 @@ def parse(filename) :
 		types = component[1].lower()
 		n = int(component[2])
 		if types == "knight" :
-			knight = Knight(0, 0, color)
+			knight = Knight(-1, -1, color)
 			for i in range (0, n) :
 				arrcomponent.append(knight)
 		elif types == "bishop" :
-			bishop = Bishop(0, 0, color)
+			bishop = Bishop(-1, -1, color)
 			for i in range (0, n) :
 				arrcomponent.append(bishop)
 		elif types == "rook" :
-			rook = Rook(0, 0, color)
+			rook = Rook(-1, -1, color)
 			for i in range (0, n) :
 				arrcomponent.append(rook)
 		elif types == "queen" :
-			queen = Queen(0, 0, color)
+			queen = Queen(-1, -1, color)
 			for i in range (0, n) :
 				arrcomponent.append(queen)
 

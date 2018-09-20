@@ -1,4 +1,5 @@
 from .ChessPiece import ChessPiece, find_chess_piece
+from .Color import Color
 
 class Bishop(ChessPiece):
   def __init__(self,x,y,color):

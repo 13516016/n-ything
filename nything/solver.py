@@ -1,5 +1,6 @@
-from .cost import *
+from .fitness import *
 from random import randint
+from model import find_chess_piece
 
 def more_optimal(min_same_color_attacks, max_different_color_attacks, current_chess_pieces):
     (same_color_attacks, different_color_attacks) = fitness(current_chess_pieces)
@@ -15,7 +16,7 @@ def more_optimal(min_same_color_attacks, max_different_color_attacks, current_ch
 def random_position(chess_pieces):
     (random_x, random_y) = (randint(0, 7), randint(0, 7))
 
-    while(chess_pieces[0].find_chess_pieces(chess_pieces, random_x, random_y)):
+    while(None != find_chess_piece(chess_pieces, random_x, random_y)):
         (random_x, random_y) = (randint(0, 7), randint(0, 7))
 
     return (random_x, random_y)

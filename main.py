@@ -1,6 +1,7 @@
-from util import parser, printer
+from util import parse, printboard, printattack
 from algorithm import annealing, genetic, hill_climbing
 from model import Color, Queen
+from nything import generate_random_solution
 
 
 def show_landing_screen():
@@ -47,6 +48,9 @@ if (__name__ == '__main__'):
   show_landing_screen()
   filename = show_file_prompt()
   option = show_option_prompt()
-  # chess_pieces = parser(filename)
+
+  chess_pieces = parse(filename)
   # result = choose_algorithm(option, chess_pieces)
-  # printer(result)
+  chess_pieces = generate_random_solution(chess_pieces)
+  printboard(chess_pieces)
+  printattack(chess_pieces)

@@ -1,2 +1,2 @@
-from .cost import *
+from .fitness import *
 from .solver import *

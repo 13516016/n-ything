@@ -1,5 +1,5 @@
 from .ChessPiece import ChessPiece
-
+from .Color import Color
 class Knight(ChessPiece):
   def __init__(self,x,y,color):
     super().__init__(x,y,color)

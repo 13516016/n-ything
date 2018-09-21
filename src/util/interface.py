@@ -34,7 +34,7 @@ def show_landing_screen():
   )
 
 def show_file_prompt():
-  print("Enter filename: ", end='')
+  print("Enter filepath: ", end='')
   filename = input()
   return filename
 

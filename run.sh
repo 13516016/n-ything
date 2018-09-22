@@ -1,4 +1,5 @@
 #!/bin/bash
+clear
 printf ">> Running N-Y Thing\n"
 argv=("$@")
 python3 src/main.py ${argv[0]}

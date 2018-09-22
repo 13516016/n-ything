@@ -6,19 +6,19 @@ OPTION_GENETIC_ALGORITHM = 3
 
 def __do_hill_climbing(chess_pieces):
     max_iteration = int(input("Max iterations: "))
-    # result = hill_climbing(chess_pieces, max_iteration)
+    # result = hill_climbing(chess_pieces, generate_random_solution, generate_move, max_iteration)
     # return result
 
 def __do_simulated_annealing(chess_pieces):
     max_iteration = int(input("Max iterations: "))
     initial_temperature = int(input("Initial temperature: "))
     descent_rate = int(input("Descent rate: "))
-    # result = annealing(chess_pieces, max_iteration, initial_temperature, descent_rate)
+    # result = annealing(chess_pieces, generate_random_solution, generate_random_move, generate_move, max_iteration, initial_temperature, descent_rate)
     # return result
 
 def __do_genetic_algorithm(chess_pieces):
     state_generation = int(input("Initial state generation: "))
-    # result = genetic(chess_pieces, state_generation)
+    # result = genetic(chess_pieces, generate_random_solution, state_generation)
     # return result
 
 def show_landing_screen():

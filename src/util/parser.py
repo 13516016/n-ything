@@ -11,7 +11,7 @@ def parse(filename) :
 			
 			if color == "black" :
 				color = Color.BLACK
-			else:
+			else:	
 				color = Color.WHITE
 
 			if types == "knight" :

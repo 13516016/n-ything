@@ -1,10 +1,13 @@
-from nything import generate_move, generate_move_random, more_optimal
+from nything import generate_move, generate_move_random, more_optimal, fitness
 from util.printer import print_board, print_attacked_pieces
 import copy
 import math
 import random
 
 def get_probability(temperatur, const):
+	if (temperatur==0):
+		temperatur = 1
+		
 	return math.exp(((-1)*const) / temperatur)
 
 def pieces_comparing(chess_pieces, random_pieces, temperatur):
@@ -22,31 +25,21 @@ def pieces_comparing(chess_pieces, random_pieces, temperatur):
 
 	return result_pieces
 
-
-
-
-def annealing(chess_pieces, generate_random_move, max_iteration, initial_temperature, descent_rate, iteration_per_change):
+def annealing(chess_pieces, max_iteration, initial_temperature, descent_rate, iteration_per_change):
 	curr_temp = initial_temperature
 	#iterasi untuk perubahan temperatur
-	curr_interation = 0
+	curr_iteration = 0
 	#iterasi utuk total yg pernah dilakukan
 	curr_all_iteration = 0
-	print_board(chess_pieces)
-	print_attacked_pieces(chess_pieces)
-	
 
-	while (curr_interation < max_iteration):
-		generate_move_random = generate_random_move(chess_pieces)
-		chess_pieces = pieces_comparing(chess_pieces, generate_random_move, curr_temp)
-		if (curr_interation >= iteration_per_change):
+	while (curr_all_iteration < max_iteration):
+		random_pieces = generate_move_random(chess_pieces)
+		chess_pieces = pieces_comparing(chess_pieces, random_pieces, curr_temp)
+		if (curr_iteration >= iteration_per_change):
 			curr_temp = curr_temp - descent_rate
-			curr_interation = -1
+			curr_iteration = -1
 
-		curr_interation = curr_interation + 1
+		curr_iteration = curr_iteration + 1
 		curr_all_iteration = curr_all_iteration + 1
-	
 
-	print_board(chess_pieces)
-	print_attacked_pieces(chess_pieces)
-
-	return
+	return chess_pieces

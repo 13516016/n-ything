@@ -7,8 +7,7 @@ import random
 def get_probability(temperatur, const):
 	if (temperatur==0):
 		temperatur = 1
-		
-	return math.exp(((-1)*const) / temperatur)
+	return math.exp(const / temperatur)
 
 def pieces_comparing(chess_pieces, random_pieces, temperatur):
 	min_same_color_attacks, max_different_color_attacks = fitness(chess_pieces)
@@ -18,6 +17,8 @@ def pieces_comparing(chess_pieces, random_pieces, temperatur):
 		result_pieces = copy.deepcopy(random_pieces)
 	else:
 		probability = get_probability(temperatur , ((different_color_attacks - same_color_attacks) - (max_different_color_attacks - min_same_color_attacks)))
+		
+
 		if (random.random() < probability):
 			result_pieces = copy.deepcopy(random_pieces)
 		else:
@@ -32,6 +33,8 @@ def annealing(chess_pieces, max_iteration, initial_temperature, descent_rate, it
 	#iterasi utuk total yg pernah dilakukan
 	curr_all_iteration = 0
 
+	print_board(chess_pieces)
+	print_attacked_pieces(chess_pieces)
 	while (curr_all_iteration < max_iteration):
 		random_pieces = generate_move_random(chess_pieces)
 		chess_pieces = pieces_comparing(chess_pieces, random_pieces, curr_temp)
@@ -42,4 +45,6 @@ def annealing(chess_pieces, max_iteration, initial_temperature, descent_rate, it
 		curr_iteration = curr_iteration + 1
 		curr_all_iteration = curr_all_iteration + 1
 
+	print_board(chess_pieces)
+	print_attacked_pieces(chess_pieces)
 	return chess_pieces

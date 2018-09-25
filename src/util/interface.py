@@ -1,5 +1,6 @@
 from algorithm import hill_climbing, annealing, genetic
 from nything import generate_random_solution
+from util.printer import print_board, print_attacked_pieces
 
 OPTION_HILL_CLIMBING = 1
 OPTION_SIMULATED_ANNEALING = 2
@@ -48,12 +49,12 @@ def show_option_prompt():
     print("Press 1 to use Hill Climbing Algorithm")
     print("Press 2 to use Simulated Annealing Algorithm")
     print("Press 3 to use Genetic Algorithm")
-    option = int(input())
+    option = int(input("Input : "))
 
   return option
 
 def choose_algorithm(option, chess_pieces):
-  chess_pieces = generate_random_solution(chess_pieces)
+
   result = chess_pieces
   if option == OPTION_HILL_CLIMBING:
     pass

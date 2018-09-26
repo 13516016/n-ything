@@ -3,13 +3,11 @@ from util.printer import print_board, print_attacked_pieces
 from random import randint
 import copy
 
-def genetic(chess_pieces):
-	size = 4
+def genetic(chess_pieces, size, banyakiterasi):
 	population = initPopulation(chess_pieces,size)
 
 	sortedpopulation = sorted(population, key=fitness_genetic, reverse=True)
 
-	banyakiterasi = 3
 	for i in range(0,banyakiterasi):
 
 		sortedpopulation.extend(reproduce(sortedpopulation[0],sortedpopulation[1]))

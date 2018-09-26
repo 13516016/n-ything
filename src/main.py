@@ -4,10 +4,11 @@ from util.parser import parse
 from util.interface import show_file_prompt, show_landing_screen, show_option_prompt, choose_algorithm
 from algorithm import annealing, genetic, hill_climbing
 from nything import generate_random_solution
+import time
 
 
 if (__name__ == '__main__'):
-  # show_landing_screen()
+  show_landing_screen()
 
   # Get external file
   filename = ''
@@ -28,12 +29,12 @@ if (__name__ == '__main__'):
     option = show_option_prompt()
     
     # Solve N-y thing 
-    result = choose_algorithm(option, chess_pieces)
+    result, runtime = choose_algorithm(option, chess_pieces)
+    print("\nSolved in {} seconds\n".format(runtime))
     print_board(result)
     print_attacked_pieces(result)
+    
+
   except IOError as error:
     sys.exit("Error : " +  str(error))
-
-  # Parse external file
-  # hill_climbing(chess_pieces, generate_move, 25)
   

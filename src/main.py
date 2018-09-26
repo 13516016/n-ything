@@ -10,22 +10,30 @@ if (__name__ == '__main__'):
   # show_landing_screen()
 
   # Get external file
-  # if (len(sys.argv) < 2): 
-  #   filename = show_file_prompt()
-  # else :
-  #   filename = sys.argv[1]
-  
-  # Show options
-  # option = show_option_prompt()
-  
-  # Parse external file
+  filename = ''
+  if (len(sys.argv) >= 2):
+    filename = sys.argv[1]
+  else:
+    filename = show_file_prompt()
+
   try:
-    chess_pieces = parse('test2.txt')
+    chess_pieces = parse(filename)
+
+    # Generate initial state
+    chess_pieces = generate_random_solution(chess_pieces)
+    print_board(chess_pieces)
+    print_attacked_pieces(chess_pieces)
+    
+    # Show options
+    option = show_option_prompt()
+    
+    # Solve N-y thing 
+    result = choose_algorithm(option, chess_pieces)
+    print_board(result)
+    print_attacked_pieces(result)
   except IOError as error:
     sys.exit("Error : " +  str(error))
+
+  # Parse external file
+  # hill_climbing(chess_pieces, generate_move, 25)
   
-  # result = choose_algorithm(option, chess_pieces)
-  chess_pieces = genetic(chess_pieces)
-  print_board(chess_pieces)
-  #print_board(chess_pieces)
-  #print_attacked_pieces(chess_pieces)

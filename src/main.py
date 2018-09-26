@@ -7,7 +7,7 @@ from nything import generate_random_solution
 
 
 if (__name__ == '__main__'):
-  show_landing_screen()
+  # show_landing_screen()
 
   # Get external file
   filename = ''
@@ -31,11 +31,9 @@ if (__name__ == '__main__'):
     result = choose_algorithm(option, chess_pieces)
     print_board(result)
     print_attacked_pieces(result)
-    
   except IOError as error:
     sys.exit("Error : " +  str(error))
 
   # Parse external file
-  
   # hill_climbing(chess_pieces, generate_move, 25)
-
+  

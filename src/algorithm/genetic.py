@@ -4,13 +4,11 @@ from random import randint
 import copy
 import time
 
-def genetic(chess_pieces):
-	size = 4
+def genetic(chess_pieces, size, banyakiterasi):
 	population = initPopulation(chess_pieces,size)
 
 	sortedpopulation = sorted(population, key=fitness_genetic, reverse=True)
 
-	banyakiterasi = 100
 	for i in range(0,banyakiterasi):
 
 		sortedpopulation.extend(reproduce(sortedpopulation[0],sortedpopulation[1]))

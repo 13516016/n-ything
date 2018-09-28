@@ -31,6 +31,8 @@ if (__name__ == '__main__'):
     result = choose_algorithm(option, chess_pieces)
     print_board(result)
     print_attacked_pieces(result)
+    print('banyak bidak: '+str(len(result)))
+    x = input()
   except IOError as error:
     sys.exit("Error : " +  str(error))
 

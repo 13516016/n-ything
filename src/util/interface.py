@@ -20,9 +20,9 @@ def __do_simulated_annealing(chess_pieces):
     return result
 
 def __do_genetic_algorithm(chess_pieces):
-    state_generation = int(input("Initial state generation: "))
-    # result = genetic(chess_pieces, generate_random_solution, state_generation)
-    # return result
+    # state_generation = int(input("Initial state generation: "))
+    result = genetic(chess_pieces)
+    return result
 
 def show_landing_screen():
   print(
@@ -64,5 +64,5 @@ def choose_algorithm(option, chess_pieces):
     result =  __do_simulated_annealing(chess_pieces)
   elif option == OPTION_GENETIC_ALGORITHM:
     pass
-    # result =  __do_genetic_algorithm(chess_pieces)
+    result =  __do_genetic_algorithm(chess_pieces)
   return result

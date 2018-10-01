@@ -2,6 +2,7 @@ from nything import *
 from util.printer import print_board, print_attacked_pieces
 from random import randint
 import copy
+import time
 
 def genetic(chess_pieces, size, banyakiterasi):
 	population = initPopulation(chess_pieces,size)
@@ -14,6 +15,14 @@ def genetic(chess_pieces, size, banyakiterasi):
 		sortedpopulation.extend(reproduce(sortedpopulation[1],sortedpopulation[2]))
 
 		sortedpopulation = sorted(sortedpopulation, key=fitness_genetic, reverse=True)
+		sortedpopulation = sortedpopulation[:8]
+
+	for individual in sortedpopulation:
+		print_board(individual)
+		print_attacked_pieces(individual)
+		print('banyak bidak: '+str(len(individual)))
+	print('SELESAI')
+	print(time.time())
 
 	return sortedpopulation[0]
 
@@ -42,23 +51,34 @@ def reproduce(parent1,parent2):
 	arrp1 = []
 	idx=0
 	for eachpiece in p1:
-		bidak = tuple((str(eachpiece), eachpiece.x, eachpiece.y,idx))
+		bidak = tuple((str(eachpiece), eachpiece.x, eachpiece.y, idx))
 		arrp1.append(bidak)
 		idx+=1
 	arrp1 = sorted(arrp1, key=urutX)
-	arrp1 = arrp1[:c]
 
 	listp2done = []
-	for idx1 in arrp1:
+	
+	j=0
+	banyaktertukar = 0
+
+	while (banyaktertukar<c and j < n):
 		i=0
 		for piece2 in p2:
-			if (str(p1[idx1[3]])==str(piece2)):
+			if (str(p1[arrp1[j][3]])==str(piece2)):
 				if not(isitDone(listp2done,i)):
-					p2[i] = p1[idx1[3]]
-					p1[idx1[3]] = piece2
-					listp2done.append(i)
-					break
+					if (find_chess_piece(p1,piece2.x,piece2.y) == None and find_chess_piece(p2,p1[arrp1[j][3]].x,p1[arrp1[j][3]].y) == None):
+						tempx = piece2.x
+						tempy = piece2.y
+						p2[i].x = p1[arrp1[j][3]].x
+						p2[i].y = p1[arrp1[j][3]].y
+						p1[arrp1[j][3]].x = tempx
+						p1[arrp1[j][3]].x = tempy
+						listp2done.append(i)
+						banyaktertukar += 1
+						break
 			i+=1
+		j += 1	
+
 
 	return [mutasi(p1),mutasi(p2)]
 

@@ -33,8 +33,7 @@ if (__name__ == '__main__'):
     print("\nSolved in {} seconds\n".format(runtime))
     print_board(result)
     print_attacked_pieces(result)
-    
-
+  
   except IOError as error:
     sys.exit("Error : " +  str(error))
   
